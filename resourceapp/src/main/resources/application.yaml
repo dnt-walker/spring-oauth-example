@@ -1,0 +1,43 @@
+server:
+  tomcat:
+    protocol-header: x-forwarded-proto
+  port: 10002
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 40MB
+      max-request-size: 50MB
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/auth?autoReconnect=true&useSSL=false&characterEncoding=utf-8
+    username: root
+    password: iww2rm
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+      hibernate.enable_lazy_load_no_trans: true
+    database: mysql
+
+  security:
+    oauth2:
+      client:
+        client-id: reader
+        client-secret: secret
+      resourceserver:
+        jwt:
+          #key-uri: http://localhost:10001/oauth/token_key
+          jwk-set-uri: http://localhost:10001/.well-known/jwks.json
+          key-uri: "http://localhost:10001/.well-known/jwks.json"
