@@ -31,13 +31,23 @@ spring:
       hibernate.enable_lazy_load_no_trans: true
     database: mysql
 
-  security:
-    oauth2:
-      client:
-        client-id: reader
-        client-secret: secret
-      resourceserver:
-        jwt:
-          #key-uri: http://localhost:10001/oauth/token_key
-          jwk-set-uri: http://localhost:10001/.well-known/jwks.json
-          key-uri: "http://localhost:10001/.well-known/jwks.json"
+security:
+  oauth2:
+    client:
+      client-id: reader
+      client-secret: secret
+    resource:
+      jwt:
+        #key-uri: http://localhost:10001/oauth/token_key
+        #jwk-set-uri: http://localhost:10001/.well-known/jwks.json
+        #key-uri: "http://localhost:10001/.well-known/jwks.json"
+        key-value: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm0WSL0POIK/35LIfeoWQ
+          VxmVMhvFmJBlQc4tt/pLz2LS/kETcXwgsOEPy0WRU0xqXpFRTMAZIHuvJ3PptDZ8
+          HiozxpN3/kIpbzlfYXu9iURytFhLWoKxxkkEuDvce0hw49yHaWQauc3l7YGHvBSo
+          E8KODw5nicpiSAU7IP5Ltt/f8e8FY+wc/EIMml+6cXV6pyAxelUYKRrrBbsJZE88
+          uM2DSvT4lZyPOb4N78IeXpWxNQaphoRImL8Qs5j8DP7P081jNTNx4T3E2HwjYbXr
+          rAFGfaHVyixrXves+cdgELm+58B3S0+4DWuR/W2HVRFTLG8Siev2310BqoyihzdU
+          KQIDAQAB
+          -----END PUBLIC KEY-----

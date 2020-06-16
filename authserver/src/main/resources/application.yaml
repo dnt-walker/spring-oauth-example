@@ -41,4 +41,5 @@ security:
     authorizationserver:
       jwt:
         enabled: true
+    #  key-file: "/Users/walker/Sources/java/spring-oauth-example/authserver/server.jks"
     # authorization.token-key-access: isAuthenticated()
